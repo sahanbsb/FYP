@@ -1,7 +1,7 @@
 res <- read.csv("res.csv");
 
 #Convert Date field from string to Date format
-res$Date <- as.Date(as.character(res$Date),format="%Y-%m-%d")
+res$Date <- as.Date(as.character(res$Date),format="%d/%m/%Y")
 
 #seperate records for itemId = 182
 selectedItem <- res[res[, "ItemID"] == 182,]
