@@ -1,0 +1,6 @@
+data2010 <- subset(data,Date < as.Date("2013-01-01"))
+demand2010 <- ts(data2010$Quantity,start = c(2010,1),frequency = 365)
+demand2010 <- ts(data$Quantuty,start = c(2010,1),frequancy = 365)
+hw2010 <- HoltWinters(demand2010)
+forecast <- predict(hw2010,n.ahead = 365,prediction.interval = T, level = 0.95)
+plot(hw2010,forecast)
