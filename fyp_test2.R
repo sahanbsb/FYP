@@ -1,7 +1,9 @@
-library(RODBC)
-dbhandle <- odbcDriverConnect('driver={SQL Server};server=DRAGONFIRE\\\\Sahan,1433;database=PDNSR;trusted_connection=true')
-res <- sqlQuery(dbhandle, 'SELECT Date, CustomerID, ItemID FROM [PDNSR].[dbo].[PDNStuRes] order by Date, CustomerID, ItemID;')
-res2 <- sqlQuery(dbhandle, 'select * from PDNSR.dbo.PDNStuRes;')
+res <- read.csv("res.csv");
+res2 <- read.csv("res.csv");
+
+res$Date <- as.Date(as.character(res$Date),format="%d/%m/%Y")
+
+res <- res[ order(res$Date, res$CustomerID, res$ItemID), ]
 
 #Finding item id with most records
 itemIDs <- res2$ItemID

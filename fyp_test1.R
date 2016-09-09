@@ -1,6 +1,4 @@
-library(RODBC)
-dbhandle <- odbcDriverConnect('driver={SQL Server};server=DRAGONFIRE\\\\Sahan,1433;database=PDNSR;trusted_connection=true')
-res <- sqlQuery(dbhandle, 'select * from PDNSR.dbo.PDNStuRes;')
+res <- read.csv("res.csv");
 
 #Convert Date field from string to Date format
 res$Date <- as.Date(as.character(res$Date),format="%Y-%m-%d")
